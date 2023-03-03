@@ -13,22 +13,20 @@ def getAdjacentFields(table, row, column):
     #Now we add the numbers from the subsets to the adjacent, excluding duplicates
     for numSet in nearbySubsets:
         for num in numSet:
-            if num in adjacent:
-                continue
-            adjacent.append(num)
+            if num not in adjacent:
+                adjacent.append(num)
     #Now we just need to add numbers on the same row and same column
     #same row
     for group in table[row]:
         for num in group:
-            if num in adjacent:
-                continue
-            adjacent.append(num)
+            if num not in adjacent:
+                adjacent.append(num)
     #same column
     for row in table:
         num = row[col][column%3]
-        if num in adjacent:
-                continue
-        adjacent.append(num)
+        if num not in adjacent:
+                adjacent.append(num)
+        
     return adjacent
 
 #check if elem (num) is valid
