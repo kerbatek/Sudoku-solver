@@ -64,46 +64,45 @@ def solve(tab, index = 0):
 
 
 
+if __name__ == "__main__":
+    board = [
+    [[None, None, None], [None, None, None], [None, None, None]], 
+    [[None, None, None], [None, None, None], [None, None, None]], 
+    [[None, None, None], [None, None, None], [None, None, None]], 
 
+    [[None, None, None], [None, None, None], [None, None, None]], 
+    [[None, None, None], [None, None, None], [None, None, None]], 
+    [[None, None, None], [None, None, None], [None, None, None]], 
 
-board = [
-[[None, None, None], [None, None, None], [None, None, None]], 
-[[None, None, None], [None, None, None], [None, None, None]], 
-[[None, None, None], [None, None, None], [None, None, None]], 
+    [[None, None, None], [None, None, None], [None, None, None]], 
+    [[None, None, None], [None, None, None], [None, None, None]], 
+    [[None, None, None], [None, None, None], [None, None, None]]]
 
-[[None, None, None], [None, None, None], [None, None, None]], 
-[[None, None, None], [None, None, None], [None, None, None]], 
-[[None, None, None], [None, None, None], [None, None, None]], 
+    board = [
+    [[4, None, None], [None, 5, None], [None, None, 8]], 
+    [[None, None, None], [None, None, 2], [1, None, None]], 
+    [[1, 5, None], [None, None, 6], [7, None, None]], 
 
-[[None, None, None], [None, None, None], [None, None, None]], 
-[[None, None, None], [None, None, None], [None, None, None]], 
-[[None, None, None], [None, None, None], [None, None, None]]]
+    [[7, None, None], [None, None, None], [None, 5, None]], 
+    [[None, None, 8], [3, None, None], [None, None, 1]], 
+    [[None, None, None], [4, None, None], [None, 2, None]], 
 
-board = [
-[[4, None, None], [None, 5, None], [None, None, 8]], 
-[[None, None, None], [None, None, 2], [1, None, None]], 
-[[1, 5, None], [None, None, 6], [7, None, None]], 
+    [[9, 6, 3], [None, None, 4], [None, None, None]], 
+    [[None, None, None], [9, None, None], [2, None, None]], 
+    [[None, None, None], [None, 1, None], [None, None, 3]]]
+                    
+    print("Board before")
+    for index, row in enumerate(board):
+        if index % 3 == 0:
+            print("")
+        print(row)
 
-[[7, None, None], [None, None, None], [None, 5, None]], 
-[[None, None, 8], [3, None, None], [None, None, 1]], 
-[[None, None, None], [4, None, None], [None, 2, None]], 
+    print("\n")
+    solve(board)
 
-[[9, 6, 3], [None, None, 4], [None, None, None]], 
-[[None, None, None], [9, None, None], [2, None, None]], 
-[[None, None, None], [None, 1, None], [None, None, 3]]]
-                
-print("Board before")
-for index, row in enumerate(board):
-    if index % 3 == 0:
-        print("")
-    print(row)
-
-print("\n")
-solve(board)
-
-print("Board after")
-for index, row in enumerate(board):
-    if index % 3 == 0:
-        print("")
-    print(row)   
+    print("Board after")
+    for index, row in enumerate(board):
+        if index % 3 == 0:
+            print("")
+        print(row)   
 
