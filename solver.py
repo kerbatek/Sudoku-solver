@@ -1,7 +1,6 @@
-import math
 def getAdjacentFields(table, row, column):
     adjacent = []
-    col = math.floor(column/3)
+    col = column//3
     #Now we get rest the fields in its subset
     match row % 3:
         case 0: #top part
@@ -30,10 +29,9 @@ def getAdjacentFields(table, row, column):
     return adjacent
 
 #check if elem (num) is valid
-def isValid(tab, row, col, elem):
-    if elem in getAdjacentFields(tab, row, col):
-        return False
-    return True
+def isValid(tab, row, col, num):
+    return num not in getAdjacentFields(tab, row, col)
+
     
 
 def solve(tab, index = 0):
@@ -41,21 +39,21 @@ def solve(tab, index = 0):
     if index == 9*9:
         return True
     #translate index into row,col number
-    row = math.floor(index/9)
+    row = index // 9
     col = index % 9 
     #we can go check next field if there is already a number here, as there is no need to check if it is valid, 
     #because there is no way that an invalid number gets written into array
-    if tab[row][math.floor(col/3)][col%3] is not None:
+    if tab[row][col//3][col%3] is not None:
         return solve(tab, index+1)
     
-    for possibility in range(1,10):
-        if isValid(tab, row, col, possibility):
-            tab[row][math.floor(col/3)][col%3] = possibility
+    for num in range(1,10):
+        if isValid(tab, row, col, num):
+            tab[row][col//3][col%3] = num
             if (solve(tab, index+1)):
                 #if this number leads to solving the table we keep it
                 return True
             #if it doesnt then we clear it and try another one    
-            tab[row][math.floor(col/3)][col%3] = None
+            tab[row][col//3][col%3] = None
     return False
     
 
