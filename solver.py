@@ -2,13 +2,12 @@ def getAdjacentFields(table, row, column):
     adjacent = []
     col = column//3
     #Now we get rest the fields in its subset
-    match row % 3:
-        case 0: #top part
-            nearbySubsets = [table[row][col], table[row+1][col], table[row+2][col]]
-        case 1: #middle part
-            nearbySubsets = [table[row-1][col], table[row][col], table[row+1][col]]
-        case 2: #bottom part
-            nearbySubsets = [table[row-2][col], table[row-1][col], table[row][col]]
+    if row % 3 == 0: #top part
+        nearbySubsets = [table[row][col], table[row+1][col], table[row+2][col]]
+    elif row % 3 == 1: #middle part
+        nearbySubsets = [table[row-1][col], table[row][col], table[row+1][col]]
+    else: #bottom part
+        nearbySubsets = [table[row-2][col], table[row-1][col], table[row][col]]
     #Now we add the numbers from the subsets to the adjacent, excluding duplicates
     for numSet in nearbySubsets:
         for num in numSet:
@@ -30,6 +29,7 @@ def getAdjacentFields(table, row, column):
 
 #check if elem (num) is valid
 def isValid(tab, row, col, num):
+    
     return num not in getAdjacentFields(tab, row, col)
 
     
@@ -61,6 +61,8 @@ def solve(tab, index = 0):
 
 
 if __name__ == "__main__":
+    from reader import readBoard
+
     board = [
     [[None, None, None], [None, None, None], [None, None, None]], 
     [[None, None, None], [None, None, None], [None, None, None]], 
@@ -87,6 +89,7 @@ if __name__ == "__main__":
     [[None, None, None], [9, None, None], [2, None, None]], 
     [[None, None, None], [None, 1, None], [None, None, 3]]]
                     
+    board = readBoard("board2");
     print("Board before")
     for index, row in enumerate(board):
         if index % 3 == 0:
